@@ -1,9 +1,23 @@
 import prisma from "../lib/prisma.js";
+import { redis } from "../lib/redis.js";
 export const getAllPosts = async (req, res) => {
-  //TODO: get all posts
   try {
-    const posts = await prisma.post.findMany({});
-    res.status(200).json({ posts });
+    //if present in redis
+    let posts = await redis.get("posts");
+    if (posts) {
+      posts = JSON.parse(posts);
+      return res.status(200).json({ posts, source: "cache" });
+    }
+
+    posts = await prisma.post.findMany({});
+    if (posts.length === 0) {
+      return res.status(404).json({ message: "No posts found" });
+    }
+
+    //set in redis
+    await redis.set("posts", JSON.stringify(posts), "EX", 300);
+
+    res.status(200).json({ posts, source: "database" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -12,8 +26,21 @@ export const getAllPosts = async (req, res) => {
 export const getSinglePost = async (req, res) => {
   try {
     const { id } = req.params;
-    const post = await prisma.post.findUnique({ where: { id } });
-    res.status(200).json({ post });
+    let post = redis.get(`post:${id}`);
+    if (post) {
+      post = JSON.parse(post);
+      return res.status(200).json({ post, source: "cache" });
+    }
+
+    post = await prisma.post.findUnique({ where: { id } });
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    await redis.set("post", JSON.stringify(post), "EX", 300);
+
+    res.status(200).json({ post, source: "database" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -69,6 +96,13 @@ export const updatePost = async (req, res) => {
       },
     });
 
+    await redis.del("posts");
+    await redis.set(`post:${id}`, JSON.stringify(updatedPost), "EX", 300);
+
+    // Rebuild the posts cache
+    const allPosts = await prisma.post.findMany({});
+    await redisClient.set("posts", JSON.stringify(allPosts), "EX", 600);
+
     res.status(200).json({ updatedPost });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -79,6 +113,14 @@ export const deletePost = async (req, res) => {
   try {
     const { id } = req.params;
     await prisma.post.delete({ where: { id } });
+
+    await redis.del("posts");
+    await redis.del(`post:${id}`);
+
+    // Rebuild the posts cache
+    const allPosts = await prisma.post.findMany({});
+    await redisClient.set("posts", JSON.stringify(allPosts), "EX", 600);
+
     res.status(200).json({ message: "Post deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
