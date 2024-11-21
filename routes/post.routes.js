@@ -6,6 +6,7 @@ import {
   getSinglePost,
   updatePost,
 } from "../controllers/post.controllers.js";
+import { protectRoute } from "../middleware/protectRoute.js";
 
 const router = express.Router();
 
@@ -13,10 +14,10 @@ router.get("/", getAllPosts);
 
 router.get("/:id", getSinglePost);
 
-router.post("/", createPost);
+router.post("/", protectRoute, createPost);
 
-router.put("/:id", updatePost);
+router.put("/:id", protectRoute, updatePost);
 
-router.delete("/:id", deletePost);
+router.delete("/:id", protectRoute, deletePost);
 
 export default router;

@@ -35,17 +35,19 @@ model PostDetail {
   description String
   amenities   String[]
   nearby      String[]
-  post        Post     @relation(fields: [postId], references: [id])
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId      String   @unique
 }
 
 model SavedPost {
   id        String   @id @default(cuid())
-  user      User     @relation(fields: [userId], references: [id])
-  post      Post     @relation(fields: [postId], references: [id])
-  userId    String   @unique
-  postId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  postId    String
   createdAt DateTime @default(now())
+
+  @@unique([userId, postId]) // Composite unique constraint
 }
 
 model User {
@@ -57,8 +59,7 @@ model User {
   updatedAt DateTime    @updatedAt
   savedPost SavedPost[]
   post      Post[]
-
-  Review Review[]
+  Review    Review[]
 }
 
 model Review {
@@ -66,8 +67,10 @@ model Review {
   rating    Int
   body      String?
   createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
-  post      Post     @relation(fields: [postId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   userId    String   @unique
   postId    String   @unique
+
+  @@unique([userId, postId]) // Composite unique constraint
 }
