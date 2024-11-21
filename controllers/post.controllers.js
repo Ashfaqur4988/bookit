@@ -26,7 +26,7 @@ export const getAllPosts = async (req, res) => {
 export const getSinglePost = async (req, res) => {
   try {
     const { id } = req.params;
-    let post = redis.get(`post:${id}`);
+    let post = await redis.get(`post:${id}`);
     if (post) {
       post = JSON.parse(post);
       return res.status(200).json({ post, source: "cache" });
@@ -38,7 +38,7 @@ export const getSinglePost = async (req, res) => {
       return res.status(404).json({ message: "Post not found" });
     }
 
-    await redis.set("post", JSON.stringify(post), "EX", 300);
+    await redis.set(`post:${id}`, JSON.stringify(post), "EX", 300);
 
     res.status(200).json({ post, source: "database" });
   } catch (error) {
@@ -101,7 +101,7 @@ export const updatePost = async (req, res) => {
 
     // Rebuild the posts cache
     const allPosts = await prisma.post.findMany({});
-    await redisClient.set("posts", JSON.stringify(allPosts), "EX", 600);
+    await redis.set("posts", JSON.stringify(allPosts), "EX", 600);
 
     res.status(200).json({ updatedPost });
   } catch (error) {
@@ -116,10 +116,6 @@ export const deletePost = async (req, res) => {
 
     await redis.del("posts");
     await redis.del(`post:${id}`);
-
-    // Rebuild the posts cache
-    const allPosts = await prisma.post.findMany({});
-    await redisClient.set("posts", JSON.stringify(allPosts), "EX", 600);
 
     res.status(200).json({ message: "Post deleted successfully" });
   } catch (error) {
