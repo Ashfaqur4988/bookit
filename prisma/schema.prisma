@@ -22,7 +22,7 @@ model Post {
   postDetail PostDetail?
   savedPost  SavedPost[]
 
-  Review Review[]
+  review Review[]
 }
 
 enum Type {
@@ -51,26 +51,27 @@ model SavedPost {
 }
 
 model User {
-  id        String      @id @default(cuid())
-  username  String
-  email     String      @unique
-  password  String
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-  savedPost SavedPost[]
-  post      Post[]
-  Review    Review[]
+  id             String      @id @default(cuid())
+  username       String
+  email          String      @unique
+  password       String
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  profilePicture String?
+  savedPost      SavedPost[]
+  posts          Post[]
+  review         Review[]
 }
 
 model Review {
   id        String   @id @default(cuid())
   rating    Int
-  body      String?
+  comment   String?
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
-  userId    String   @unique
-  postId    String   @unique
+  userId    String
+  postId    String
 
-  @@unique([userId, postId]) // Composite unique constraint
+  // Composite unique constraint
 }

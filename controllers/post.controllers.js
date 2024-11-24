@@ -6,10 +6,15 @@ export const getAllPosts = async (req, res) => {
     let posts = await redis.get("posts");
     if (posts) {
       posts = JSON.parse(posts);
-      return res.status(200).json({ posts, source: "cache" });
+      return res.status(200).json(posts);
     }
 
-    posts = await prisma.post.findMany({});
+    posts = await prisma.post.findMany({
+      include: {
+        user: true,
+        postDetail: true,
+      },
+    });
     if (posts.length === 0) {
       return res.status(404).json({ message: "No posts found" });
     }
@@ -17,7 +22,7 @@ export const getAllPosts = async (req, res) => {
     //set in redis
     await redis.set("posts", JSON.stringify(posts), "EX", 300);
 
-    res.status(200).json({ posts, source: "database" });
+    res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -26,21 +31,42 @@ export const getAllPosts = async (req, res) => {
 export const getSinglePost = async (req, res) => {
   try {
     const { id } = req.params;
-    let post = await redis.get(`post:${id}`);
-    if (post) {
-      post = JSON.parse(post);
-      return res.status(200).json({ post, source: "cache" });
-    }
 
-    post = await prisma.post.findUnique({ where: { id } });
+    const post = await prisma.post.findUnique({
+      include: {
+        postDetail: true,
+        user: {
+          select: {
+            username: true,
+            email: true,
+            profilePicture: true,
+            id: true,
+          },
+        },
+        review: {
+          select: {
+            rating: true,
+            comment: true,
+            id: true,
+            user: {
+              select: {
+                id: true,
+                username: true,
+                email: true,
+                profilePicture: true,
+              },
+            },
+          },
+        },
+      },
+      where: { id },
+    });
 
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
 
-    await redis.set(`post:${id}`, JSON.stringify(post), "EX", 300);
-
-    res.status(200).json({ post, source: "database" });
+    res.status(200).json(post);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -48,15 +74,15 @@ export const getSinglePost = async (req, res) => {
 
 export const createPost = async (req, res) => {
   const tokenUserId = req.userId;
-  const body = req.body;
+  const { postData, postDetail } = req.body;
   try {
     const newPost = await prisma.post.create({
       data: {
-        ...body.postData,
+        ...postData,
         user: {
           connect: { id: tokenUserId }, // Associate the post with the authenticated user
         },
-        postDetail: { create: body.postDetail },
+        postDetail: { create: postDetail },
       },
     });
 

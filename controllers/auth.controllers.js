@@ -44,9 +44,13 @@ export const register = async (req, res) => {
 
     setCookie(res, accessToken, refreshToken);
 
-    res
-      .status(201)
-      .json({ message: "User created successfully", user: newUser.id });
+    res.status(201).json({
+      message: "User created successfully",
+      username: newUser.username,
+      email: newUser.email,
+      id: newUser.id,
+      profilePicture: newUser.profilePicture,
+    });
   } catch (error) {
     res
       .status(500)
@@ -67,9 +71,12 @@ export const login = async (req, res) => {
       const { accessToken, refreshToken } = generateToken(user.id);
       storeRefreshToken(user.id, refreshToken);
       setCookie(res, accessToken, refreshToken);
-      res
-        .status(200)
-        .json({ message: "User logged in successfully", user: user.id });
+      res.status(200).json({
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        profilePicture: user.profilePicture,
+      });
     } else {
       return res
         .status(400)
@@ -102,9 +109,20 @@ export const logout = async (req, res) => {
   }
 };
 
-export const getUser = (req, res) => {
+export const getUser = async (req, res) => {
   try {
-    res.status(200).json({ user: req.userId });
+    const user = await prisma.user.findUnique({
+      where: { id: req.userId },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        profilePicture: true,
+        posts: true,
+        savedPost: true,
+      },
+    });
+    res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
