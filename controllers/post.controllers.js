@@ -14,6 +14,9 @@ export const getAllPosts = async (req, res) => {
         user: true,
         postDetail: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
     if (posts.length === 0) {
       return res.status(404).json({ message: "No posts found" });
@@ -85,6 +88,8 @@ export const createPost = async (req, res) => {
         postDetail: { create: postDetail },
       },
     });
+
+    await redis.del("posts");
 
     res.status(200).json({ newPost });
   } catch (error) {
