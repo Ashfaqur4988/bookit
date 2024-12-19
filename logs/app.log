@@ -1,0 +1,26 @@
+2024-12-19T19:29:36.216Z info: Server is running
+2024-12-19T19:30:37.343Z info: Server is running 8080
+2024-12-19T19:33:23.191Z info: Server is running 8080
+2024-12-19T19:34:52.720Z info: Server is running 8080
+2024-12-19T19:36:49.717Z info: Server is running 8080
+2024-12-19T19:37:50.629Z info: Server is running 8080
+2024-12-19T19:38:14.828Z info: Server is running 8080
+2024-12-19T19:59:03.006Z info: Server is running 8080
+2024-12-19T19:59:13.700Z info: From getAllPosts in post controller.
+2024-12-19T19:59:13.701Z info: Query: 
+2024-12-19T19:59:16.959Z info: Posts fetched from database.
+2024-12-19T19:59:29.676Z info: From getAllPosts in post controller.
+2024-12-19T19:59:29.678Z info: Query: 
+2024-12-19T19:59:29.782Z info: Posts fetched from Redis.
+2024-12-19T19:59:34.679Z info: From getAllPosts in post controller.
+2024-12-19T19:59:34.680Z info: Query: 
+2024-12-19T19:59:34.780Z info: Posts fetched from Redis.
+2024-12-19T19:59:36.376Z info: From getAllPosts in post controller.
+2024-12-19T19:59:36.377Z info: Query: 
+2024-12-19T19:59:36.490Z info: Posts fetched from Redis.
+2024-12-19T19:59:37.740Z info: From getAllPosts in post controller.
+2024-12-19T19:59:37.740Z info: Query: 
+2024-12-19T19:59:37.842Z info: Posts fetched from Redis.
+2024-12-19T19:59:38.963Z info: From getAllPosts in post controller.
+2024-12-19T19:59:38.964Z info: Query: 
+2024-12-19T19:59:39.070Z info: Posts fetched from Redis.

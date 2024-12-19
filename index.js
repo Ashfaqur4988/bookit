@@ -1,3 +1,4 @@
+import logger from "./logger.js";
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
@@ -25,6 +26,8 @@ app.use("/api/posts", postRouter);
 app.use("/api/reviews", reviewRouter);
 app.use("/api/users", userRouter);
 
-app.listen(8080, () => {
-  console.log("listening on port 8080");
+const port = process.env.PORT || 8080;
+
+app.listen(port, () => {
+  logger.info(`Server is running ${port}`);
 });

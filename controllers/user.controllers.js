@@ -2,6 +2,7 @@ import prisma from "../lib/prisma.js";
 import bcrypt from "bcrypt";
 
 export const updateUser = async (req, res) => {
+  logger.info("From updateUser in user controller.");
   const { username, email, profilePicture, oldPassword, newPassword } =
     req.body;
 
@@ -11,6 +12,7 @@ export const updateUser = async (req, res) => {
     });
 
     if (!user) {
+      logger.error("User not found. Error from updateUser in user controller.");
       return res.status(404).json({ message: "User not found" });
     }
 
@@ -18,12 +20,18 @@ export const updateUser = async (req, res) => {
 
     if (oldPassword || newPassword) {
       if (!oldPassword || !newPassword) {
+        logger.error(
+          "Both passwords are required. Error from updateUser in user controller."
+        );
         return res.status(400).json({ message: "Both passwords are required" });
       }
 
       const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
 
       if (!isPasswordValid) {
+        logger.error(
+          "Old password is incorrect. Error from updateUser in user controller."
+        );
         return res.status(400).json({ message: "Old password is incorrect" });
       }
 
@@ -41,8 +49,12 @@ export const updateUser = async (req, res) => {
       },
     });
 
+    logger.info(
+      "User updated successfully. From updateUser in user controller."
+    );
     res.status(200).json(updatedUser);
   } catch (error) {
+    logger.error("Error from updateUser in user controller.", error.message);
     res.status(500).json({ message: error.message });
   }
 };

@@ -1,13 +1,20 @@
 import { motion } from "framer-motion"; // Framer Motion for animation
 import { useState } from "react";
+import { usePropertiesStore } from "../../store/usePropertiesStore";
 
 const Filter = () => {
+  const { getAllPosts } = usePropertiesStore();
   const [filterProps, setFilterProps] = useState({
     type: "",
-    location: "",
+    city: "",
     minPrice: "",
     maxPrice: "",
   });
+
+  const handleQuery = () => {
+    // console.log(filterProps);
+    getAllPosts(filterProps);
+  };
 
   return (
     <motion.div
@@ -43,9 +50,9 @@ const Filter = () => {
           </label>
           <input
             type="text"
-            value={filterProps.location}
+            value={filterProps.city}
             onChange={(e) =>
-              setFilterProps({ ...filterProps, location: e.target.value })
+              setFilterProps({ ...filterProps, city: e.target.value })
             }
             className="input input-bordered w-full"
             placeholder="Enter City"
@@ -80,7 +87,9 @@ const Filter = () => {
         </div>
 
         {/* Apply Filter Button */}
-        <button className="btn btn-primary">Apply Filter</button>
+        <button className="btn btn-primary" onClick={handleQuery}>
+          Apply Filter
+        </button>
       </div>
     </motion.div>
   );

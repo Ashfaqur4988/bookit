@@ -13,12 +13,16 @@ import About from "./pages/About";
 import AddProperty from "./pages/AddProperty";
 import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/Settings";
+import { Toaster } from "react-hot-toast";
+import UpdatePost from "./pages/UpdatePost";
 
 function App() {
   const { checkAuth, user } = useUserStore();
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
+  console.log(user);
 
   return (
     <>
@@ -39,6 +43,10 @@ function App() {
             path="/profile"
             element={!user ? <Login /> : <ProfilePage />}
           />
+          <Route
+            path="/update-post"
+            element={!user ? <Login /> : <UpdatePost />}
+          />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route
@@ -49,6 +57,7 @@ function App() {
           <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
+      <Toaster />
     </>
   );
 }

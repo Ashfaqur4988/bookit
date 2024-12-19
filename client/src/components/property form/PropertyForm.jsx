@@ -4,8 +4,10 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useState } from "react";
 import axios from "axios";
 import { usePropertiesStore } from "../../store/usePropertiesStore";
+import { useNavigate } from "react-router-dom";
 
 const PropertyForm = () => {
+  const navigate = useNavigate();
   const { createPost } = usePropertiesStore();
   const [images, setImages] = useState([]);
   const [formData, setFormData] = useState({
@@ -44,14 +46,14 @@ const PropertyForm = () => {
     setNearby(nearby.filter((_, i) => i !== index));
   };
 
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [uploadError, setUploadError] = useState(null);
 
   const handleImageUpload = async (e) => {
     const files = e.target.files;
     const uploadedImages = [];
 
-    setLoading(true);
+    setIsLoading(true);
     setUploadError(null);
 
     for (let file of files) {
@@ -80,10 +82,10 @@ const PropertyForm = () => {
       }));
       return updatedImages;
     });
-    setLoading(false);
+    setIsLoading(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Form submission logic here
     const post = {
@@ -103,7 +105,7 @@ const PropertyForm = () => {
     };
     // console.log(post);
 
-    createPost(post);
+    await createPost(post);
 
     setFormData({
       title: "",
@@ -116,6 +118,8 @@ const PropertyForm = () => {
     });
     setAmenities([]);
     setNearby([]);
+    setImages([]);
+    navigate(`/properties`);
   };
 
   return (
@@ -177,7 +181,7 @@ const PropertyForm = () => {
               className="file-input file-input-bordered mb-2"
               onChange={handleImageUpload}
             />
-            {loading && <p className="text-blue-500">Uploading images...</p>}
+            {isLoading && <p className="text-blue-500">Uploading images...</p>}
             {uploadError && <p className="text-red-500">{uploadError}</p>}
             <div className="flex gap-2 mt-2 flex-wrap">
               {images.map((url, index) => (
@@ -324,11 +328,13 @@ const PropertyForm = () => {
           </div>
 
           {/* Submit Button */}
-          {!loading && (
-            <button className="btn btn-primary w-full mt-4" type="submit">
-              Submit Property
-            </button>
-          )}
+          <button
+            className="btn btn-primary w-full mt-4"
+            type="submit"
+            disabled={isLoading}
+          >
+            Submit Property
+          </button>
         </form>
       </motion.div>
     </>
