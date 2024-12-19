@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import logger from "../logger";
+import logger from "../logger.js";
 
 export const protectRoute = (req, res, next) => {
   logger.info("From protectRoute middleware.");

@@ -1,12 +1,12 @@
 import prisma from "../lib/prisma.js";
 import { redis } from "../lib/redis.js";
 import logger from "../logger.js";
+
 export const getAllPosts = async (req, res) => {
   const { page = 1, limit = 10, city, type, maxPrice, minPrice } = req.query;
   const pageNumber = parseInt(page, 10);
   const pageSize = parseInt(limit, 10);
   const skip = (pageNumber - 1) * pageSize;
-
   const cacheKey = `posts:${JSON.stringify(req.query)}`;
   const maxPriceFinal = !isNaN(parseInt(maxPrice))
     ? parseInt(maxPrice)
@@ -14,6 +14,7 @@ export const getAllPosts = async (req, res) => {
   const minPriceFinal = !isNaN(parseInt(minPrice)) ? parseInt(minPrice) : 0;
   logger.info("From getAllPosts in post controller.");
   logger.info("Query: ", req.query);
+
   try {
     const isQueryEmpty =
       Object.keys(req.query) === 0 ||
@@ -48,12 +49,22 @@ export const getAllPosts = async (req, res) => {
               lte: maxPriceFinal,
             },
           },
+      select: {
+        id: true,
+        title: true,
+        price: true,
+        city: true,
+        type: true,
+        images: true,
+        postDetail: {
+          select: {
+            nearby: true,
+          },
+        },
+      },
       skip,
       take: pageSize,
-      include: {
-        user: true,
-        postDetail: true,
-      },
+
       orderBy: {
         createdAt: "desc",
       },
@@ -104,8 +115,22 @@ export const getSinglePost = async (req, res) => {
     const { id } = req.params;
 
     const post = await prisma.post.findUnique({
-      include: {
-        postDetail: true,
+      select: {
+        id: true,
+        images: true,
+        title: true,
+        price: true,
+        address: true,
+        city: true,
+        type: true,
+        postDetail: {
+          select: {
+            id: true,
+            description: true,
+            amenities: true,
+            nearby: true,
+          },
+        },
         user: {
           select: {
             username: true,

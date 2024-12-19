@@ -1,15 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useUserStore } from "../store/useUserStore";
-import { useEffect } from "react";
 
 const Home = () => {
-  const { checkAuth } = useUserStore();
-
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
-
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
