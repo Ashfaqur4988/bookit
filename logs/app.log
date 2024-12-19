@@ -269,3 +269,316 @@
 2024-12-19T21:00:45.732Z info: Single Post fetched successfully.
 2024-12-19T21:00:48.475Z info: User logged out successfully. From logout in auth controller.
 2024-12-19T21:00:48.629Z info: User logged out successfully. From logout in auth controller.
+2024-12-19T21:01:59.356Z info: From getAllPosts in post controller.
+2024-12-19T21:01:59.357Z info: Query: 
+2024-12-19T21:01:59.494Z info: Posts fetched from Redis.
+2024-12-19T21:01:59.497Z info: From getAllPosts in post controller.
+2024-12-19T21:01:59.499Z info: Query: 
+2024-12-19T21:01:59.590Z info: Posts fetched from Redis.
+2024-12-19T21:02:08.623Z info: Token generating process started.
+2024-12-19T21:02:08.626Z info: Access token generated successfully.
+2024-12-19T21:02:08.629Z info: Refresh token generated successfully.
+2024-12-19T21:02:08.630Z info: Refresh token storing process started.
+2024-12-19T21:02:08.631Z info: Setting cookie.
+2024-12-19T21:02:08.632Z info: Access token set in Cookie
+2024-12-19T21:02:08.633Z info: Refresh token set in Cookie
+2024-12-19T21:02:08.635Z info: User logged in successfully. From login in auth controller.
+2024-12-19T21:02:08.811Z info: Refresh token stored successfully.
+2024-12-19T21:02:12.567Z info: From protectRoute middleware.
+2024-12-19T21:02:12.570Z info: Access token verified.
+2024-12-19T21:02:12.571Z info: From getUser in auth controller.
+2024-12-19T21:02:13.631Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:02:13.641Z info: From protectRoute middleware.
+2024-12-19T21:02:13.646Z info: Access token verified.
+2024-12-19T21:02:13.648Z info: From getUser in auth controller.
+2024-12-19T21:02:14.293Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:02:25.728Z info: From protectRoute middleware.
+2024-12-19T21:03:06.425Z info: Server is running 8080
+2024-12-19T21:03:11.791Z info: From protectRoute middleware.
+2024-12-19T21:03:11.802Z info: Access token verified.
+2024-12-19T21:03:11.804Z info: From getUser in auth controller.
+2024-12-19T21:03:14.457Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:03:14.479Z info: From protectRoute middleware.
+2024-12-19T21:03:14.486Z info: Access token verified.
+2024-12-19T21:03:14.488Z info: From getUser in auth controller.
+2024-12-19T21:03:15.166Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:03:24.667Z info: From getAllPosts in post controller.
+2024-12-19T21:03:24.669Z info: Query: 
+2024-12-19T21:03:24.794Z info: Posts fetched from Redis.
+2024-12-19T21:03:24.803Z info: From getAllPosts in post controller.
+2024-12-19T21:03:24.805Z info: Query: 
+2024-12-19T21:03:24.997Z info: Posts fetched from Redis.
+2024-12-19T21:03:29.175Z info: From protectRoute middleware.
+2024-12-19T21:03:29.191Z info: Access token verified.
+2024-12-19T21:03:29.192Z info: From getUser in auth controller.
+2024-12-19T21:03:30.117Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:03:30.121Z info: From protectRoute middleware.
+2024-12-19T21:03:30.140Z info: Access token verified.
+2024-12-19T21:03:30.144Z info: From getUser in auth controller.
+2024-12-19T21:03:30.732Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:03:36.681Z info: From protectRoute middleware.
+2024-12-19T21:03:36.718Z info: Access token verified.
+2024-12-19T21:03:36.719Z info: From getUser in auth controller.
+2024-12-19T21:03:37.288Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:03:37.317Z info: From protectRoute middleware.
+2024-12-19T21:03:37.336Z info: Access token verified.
+2024-12-19T21:03:37.338Z info: From getUser in auth controller.
+2024-12-19T21:03:37.897Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:03:37.903Z info: From protectRoute middleware.
+2024-12-19T21:03:37.908Z info: Access token verified.
+2024-12-19T21:03:37.909Z info: From getUser in auth controller.
+2024-12-19T21:03:38.614Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:03:38.618Z info: From protectRoute middleware.
+2024-12-19T21:03:38.622Z info: Access token verified.
+2024-12-19T21:03:38.624Z info: From getUser in auth controller.
+2024-12-19T21:03:39.228Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:03:49.130Z info: From protectRoute middleware.
+2024-12-19T21:03:49.133Z info: Access token verified.
+2024-12-19T21:03:49.134Z info: From updateUser in user controller.
+2024-12-19T21:03:50.193Z info: User updated successfully. From updateUser in user controller.
+2024-12-19T21:03:52.896Z info: From getAllPosts in post controller.
+2024-12-19T21:03:52.897Z info: Query: 
+2024-12-19T21:03:53.050Z info: Posts fetched from Redis.
+2024-12-19T21:03:53.055Z info: From getAllPosts in post controller.
+2024-12-19T21:03:53.057Z info: Query: 
+2024-12-19T21:03:53.257Z info: Posts fetched from Redis.
+2024-12-19T21:03:58.181Z info: Single Post fetched successfully.
+2024-12-19T21:03:58.219Z info: From protectRoute middleware.
+2024-12-19T21:03:58.225Z info: Access token verified.
+2024-12-19T21:03:58.227Z info: From getPostReview in review controller.
+2024-12-19T21:03:59.197Z info: Single Post fetched successfully.
+2024-12-19T21:04:00.528Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:04:00.532Z info: From protectRoute middleware.
+2024-12-19T21:04:00.536Z info: Access token verified.
+2024-12-19T21:04:00.537Z info: From getPostReview in review controller.
+2024-12-19T21:04:00.940Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:04:06.900Z info: User logged out successfully. From logout in auth controller.
+2024-12-19T21:04:07.081Z info: User logged out successfully. From logout in auth controller.
+2024-12-19T21:04:17.308Z info: Token generating process started.
+2024-12-19T21:04:17.316Z info: Access token generated successfully.
+2024-12-19T21:04:17.320Z info: Refresh token generated successfully.
+2024-12-19T21:04:17.322Z info: Refresh token storing process started.
+2024-12-19T21:04:17.323Z info: Setting cookie.
+2024-12-19T21:04:17.325Z info: Access token set in Cookie
+2024-12-19T21:04:17.326Z info: Refresh token set in Cookie
+2024-12-19T21:04:17.328Z info: User logged in successfully. From login in auth controller.
+2024-12-19T21:04:17.485Z info: Refresh token stored successfully.
+2024-12-19T21:04:20.038Z info: From protectRoute middleware.
+2024-12-19T21:04:20.043Z info: Access token verified.
+2024-12-19T21:04:20.044Z info: From getUser in auth controller.
+2024-12-19T21:04:21.059Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:04:21.071Z info: From protectRoute middleware.
+2024-12-19T21:04:21.089Z info: Access token verified.
+2024-12-19T21:04:21.090Z info: From getUser in auth controller.
+2024-12-19T21:04:21.725Z info: User fetched successfully. From getUser in auth controller.
+2024-12-19T21:04:29.670Z info: From protectRoute middleware.
+2024-12-19T21:04:29.676Z info: Access token verified.
+2024-12-19T21:04:29.677Z info: From updateUser in user controller.
+2024-12-19T21:04:30.530Z info: User updated successfully. From updateUser in user controller.
+2024-12-19T21:04:33.205Z info: From getAllPosts in post controller.
+2024-12-19T21:04:33.205Z info: Query: 
+2024-12-19T21:04:33.397Z info: Posts fetched from Redis.
+2024-12-19T21:04:33.403Z info: From getAllPosts in post controller.
+2024-12-19T21:04:33.405Z info: Query: 
+2024-12-19T21:04:33.907Z info: Posts fetched from Redis.
+2024-12-19T21:04:35.582Z info: From protectRoute middleware.
+2024-12-19T21:04:35.586Z info: Access token verified.
+2024-12-19T21:04:35.587Z info: From getPostReview in review controller.
+2024-12-19T21:04:36.124Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:04:36.127Z info: From protectRoute middleware.
+2024-12-19T21:04:36.131Z info: Access token verified.
+2024-12-19T21:04:36.132Z info: From getPostReview in review controller.
+2024-12-19T21:04:36.377Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:04:36.571Z info: Single Post fetched successfully.
+2024-12-19T21:04:36.599Z info: From protectRoute middleware.
+2024-12-19T21:04:36.605Z info: Access token verified.
+2024-12-19T21:04:36.607Z info: From getPostReview in review controller.
+2024-12-19T21:04:36.906Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:04:36.932Z info: From protectRoute middleware.
+2024-12-19T21:04:36.936Z info: Access token verified.
+2024-12-19T21:04:36.938Z info: From getPostReview in review controller.
+2024-12-19T21:04:37.290Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:04:37.492Z info: Single Post fetched successfully.
+2024-12-19T21:04:46.761Z info: From protectRoute middleware.
+2024-12-19T21:04:46.765Z info: Access token verified.
+2024-12-19T21:04:46.765Z info: From addReview in review controller.
+2024-12-19T21:04:48.861Z info: Review added successfully. From addReview in review controller.
+2024-12-19T21:04:57.091Z info: User logged out successfully. From logout in auth controller.
+2024-12-19T21:04:57.255Z info: User logged out successfully. From logout in auth controller.
+2024-12-19T21:05:41.336Z info: From getAllPosts in post controller.
+2024-12-19T21:05:41.337Z info: Query: 
+2024-12-19T21:05:43.232Z info: Posts fetched from database.
+2024-12-19T21:05:43.237Z info: From getAllPosts in post controller.
+2024-12-19T21:05:43.238Z info: Query: 
+2024-12-19T21:05:43.437Z info: Posts fetched from Redis.
+2024-12-19T21:05:58.152Z info: From getAllPosts in post controller.
+2024-12-19T21:05:58.153Z info: Query: 
+2024-12-19T21:05:58.261Z info: Posts fetched from Redis.
+2024-12-19T21:05:58.266Z info: From getAllPosts in post controller.
+2024-12-19T21:05:58.268Z info: Query: 
+2024-12-19T21:05:58.385Z info: Posts fetched from Redis.
+2024-12-19T21:06:04.971Z info: From getAllPosts in post controller.
+2024-12-19T21:06:04.972Z info: Query: 
+2024-12-19T21:06:05.263Z error: Error from getAllPosts in post controller.
+2024-12-19T21:06:11.619Z info: From getAllPosts in post controller.
+2024-12-19T21:06:11.620Z info: Query: 
+2024-12-19T21:06:12.619Z info: Posts fetched from database.
+2024-12-19T21:06:13.504Z info: From getAllPosts in post controller.
+2024-12-19T21:06:13.505Z info: Query: 
+2024-12-19T21:06:13.755Z info: Posts fetched from Redis.
+2024-12-19T21:06:26.041Z info: From getAllPosts in post controller.
+2024-12-19T21:06:26.042Z info: Query: 
+2024-12-19T21:06:26.447Z error: Error from getAllPosts in post controller.
+2024-12-19T21:06:29.672Z info: From getAllPosts in post controller.
+2024-12-19T21:06:29.673Z info: Query: 
+2024-12-19T21:06:29.824Z error: Error from getAllPosts in post controller.
+2024-12-19T21:06:40.547Z info: From getAllPosts in post controller.
+2024-12-19T21:06:40.548Z info: Query: 
+2024-12-19T21:06:40.682Z error: Error from getAllPosts in post controller.
+2024-12-19T21:06:47.953Z info: From getAllPosts in post controller.
+2024-12-19T21:06:47.954Z info: Query: 
+2024-12-19T21:06:49.285Z info: Posts fetched from database.
+2024-12-19T21:07:01.571Z info: From getAllPosts in post controller.
+2024-12-19T21:07:01.572Z info: Query: 
+2024-12-19T21:07:02.714Z info: Posts fetched from database.
+2024-12-19T21:07:44.490Z info: Server is running 8080
+2024-12-19T21:08:05.613Z info: From getAllPosts in post controller.
+2024-12-19T21:08:05.618Z info: Query: 
+2024-12-19T21:08:08.975Z info: Posts fetched from database.
+2024-12-19T21:08:08.988Z info: From getAllPosts in post controller.
+2024-12-19T21:08:08.990Z info: Query: 
+2024-12-19T21:08:09.156Z info: Posts fetched from Redis.
+2024-12-19T21:08:16.041Z info: From getAllPosts in post controller.
+2024-12-19T21:08:16.042Z info: Query: 
+2024-12-19T21:08:16.966Z error: Error from getAllPosts in post controller.
+2024-12-19T21:08:23.778Z info: From getAllPosts in post controller.
+2024-12-19T21:08:23.779Z info: Query: 
+2024-12-19T21:08:25.437Z info: Posts fetched from database.
+2024-12-19T21:08:28.159Z info: From getAllPosts in post controller.
+2024-12-19T21:08:28.160Z info: Query: 
+2024-12-19T21:08:28.645Z error: No posts found.
+2024-12-19T21:08:37.075Z info: From getAllPosts in post controller.
+2024-12-19T21:08:37.077Z info: Query: 
+2024-12-19T21:08:37.216Z info: Posts fetched from Redis.
+2024-12-19T21:08:37.222Z info: From getAllPosts in post controller.
+2024-12-19T21:08:37.224Z info: Query: 
+2024-12-19T21:08:37.452Z info: Posts fetched from Redis.
+2024-12-19T21:09:45.850Z info: From getAllPosts in post controller.
+2024-12-19T21:09:45.851Z info: Query: 
+2024-12-19T21:09:46.021Z info: Posts fetched from Redis.
+2024-12-19T21:09:53.876Z info: From getAllPosts in post controller.
+2024-12-19T21:09:53.877Z info: Query: 
+2024-12-19T21:09:54.019Z info: Posts fetched from Redis.
+2024-12-19T21:09:58.355Z info: From getAllPosts in post controller.
+2024-12-19T21:09:58.356Z info: Query: 
+2024-12-19T21:09:59.230Z error: No posts found.
+2024-12-19T21:10:41.829Z info: From getAllPosts in post controller.
+2024-12-19T21:10:41.830Z info: Query: 
+2024-12-19T21:10:41.969Z info: Posts fetched from Redis.
+2024-12-19T21:10:44.770Z info: From getAllPosts in post controller.
+2024-12-19T21:10:44.770Z info: Query: 
+2024-12-19T21:10:45.413Z error: No posts found.
+2024-12-19T21:10:46.752Z info: From getAllPosts in post controller.
+2024-12-19T21:10:46.755Z info: Query: 
+2024-12-19T21:10:47.363Z error: No posts found.
+2024-12-19T21:11:13.831Z info: From getAllPosts in post controller.
+2024-12-19T21:11:13.833Z info: Query: 
+2024-12-19T21:11:13.988Z info: Posts fetched from Redis.
+2024-12-19T21:11:17.590Z info: From getAllPosts in post controller.
+2024-12-19T21:11:17.592Z info: Query: 
+2024-12-19T21:11:18.392Z error: No posts found.
+2024-12-19T21:11:22.055Z info: From getAllPosts in post controller.
+2024-12-19T21:11:22.056Z info: Query: 
+2024-12-19T21:11:22.999Z info: Posts fetched from database.
+2024-12-19T21:11:28.631Z info: From getAllPosts in post controller.
+2024-12-19T21:11:28.632Z info: Query: 
+2024-12-19T21:11:28.937Z info: Posts fetched from Redis.
+2024-12-19T21:12:26.327Z info: From getAllPosts in post controller.
+2024-12-19T21:12:26.328Z info: Query: 
+2024-12-19T21:12:26.452Z info: Posts fetched from Redis.
+2024-12-19T21:12:32.943Z info: From getAllPosts in post controller.
+2024-12-19T21:12:32.944Z info: Query: 
+2024-12-19T21:12:34.136Z info: Posts fetched from database.
+2024-12-19T21:13:10.358Z info: Token generating process started.
+2024-12-19T21:13:10.365Z info: Access token generated successfully.
+2024-12-19T21:13:10.368Z info: Refresh token generated successfully.
+2024-12-19T21:13:10.369Z info: Refresh token storing process started.
+2024-12-19T21:13:10.370Z info: Setting cookie.
+2024-12-19T21:13:10.373Z info: Access token set in Cookie
+2024-12-19T21:13:10.374Z info: Refresh token set in Cookie
+2024-12-19T21:13:10.376Z info: User logged in successfully. From login in auth controller.
+2024-12-19T21:13:10.407Z info: From protectRoute middleware.
+2024-12-19T21:13:10.417Z info: Access token verified.
+2024-12-19T21:13:10.418Z info: From getPostReview in review controller.
+2024-12-19T21:13:10.516Z info: Refresh token stored successfully.
+2024-12-19T21:13:11.244Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:13:11.247Z info: From protectRoute middleware.
+2024-12-19T21:13:11.251Z info: Access token verified.
+2024-12-19T21:13:11.252Z info: From getPostReview in review controller.
+2024-12-19T21:13:11.476Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:13:13.385Z info: Single Post fetched successfully.
+2024-12-19T21:13:13.402Z info: From protectRoute middleware.
+2024-12-19T21:13:13.406Z info: Access token verified.
+2024-12-19T21:13:13.407Z info: From getPostReview in review controller.
+2024-12-19T21:13:13.797Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:13:13.800Z info: From protectRoute middleware.
+2024-12-19T21:13:13.805Z info: Access token verified.
+2024-12-19T21:13:13.806Z info: From getPostReview in review controller.
+2024-12-19T21:13:14.103Z info: Single Post fetched successfully.
+2024-12-19T21:13:14.107Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:13:21.946Z info: From getAllPosts in post controller.
+2024-12-19T21:13:21.947Z info: Query: 
+2024-12-19T21:13:23.420Z info: Posts fetched from database.
+2024-12-19T21:13:23.430Z info: From getAllPosts in post controller.
+2024-12-19T21:13:23.431Z info: Query: 
+2024-12-19T21:13:23.623Z info: Posts fetched from Redis.
+2024-12-19T21:13:25.180Z info: From protectRoute middleware.
+2024-12-19T21:13:25.185Z info: Access token verified.
+2024-12-19T21:13:25.186Z info: From getPostReview in review controller.
+2024-12-19T21:13:25.981Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:13:25.984Z info: From protectRoute middleware.
+2024-12-19T21:13:25.989Z info: Access token verified.
+2024-12-19T21:13:25.990Z info: From getPostReview in review controller.
+2024-12-19T21:13:26.394Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:13:26.602Z info: Single Post fetched successfully.
+2024-12-19T21:13:26.623Z info: From protectRoute middleware.
+2024-12-19T21:13:26.627Z info: Access token verified.
+2024-12-19T21:13:26.628Z info: From getPostReview in review controller.
+2024-12-19T21:13:27.004Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:13:27.008Z info: From protectRoute middleware.
+2024-12-19T21:13:27.013Z info: Access token verified.
+2024-12-19T21:13:27.014Z info: From getPostReview in review controller.
+2024-12-19T21:13:27.414Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:13:28.030Z info: Single Post fetched successfully.
+2024-12-19T21:13:32.219Z info: From getAllPosts in post controller.
+2024-12-19T21:13:32.220Z info: Query: 
+2024-12-19T21:13:32.434Z info: Posts fetched from Redis.
+2024-12-19T21:13:32.441Z info: From getAllPosts in post controller.
+2024-12-19T21:13:32.443Z info: Query: 
+2024-12-19T21:13:32.638Z info: Posts fetched from Redis.
+2024-12-19T21:14:30.444Z info: From protectRoute middleware.
+2024-12-19T21:14:30.447Z info: Access token verified.
+2024-12-19T21:14:30.449Z info: From getPostReview in review controller.
+2024-12-19T21:14:31.406Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:14:31.410Z info: From protectRoute middleware.
+2024-12-19T21:14:31.414Z info: Access token verified.
+2024-12-19T21:14:31.415Z info: From getPostReview in review controller.
+2024-12-19T21:14:31.819Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:14:32.534Z info: Single Post fetched successfully.
+2024-12-19T21:14:32.554Z info: From protectRoute middleware.
+2024-12-19T21:14:32.559Z info: Access token verified.
+2024-12-19T21:14:32.560Z info: From getPostReview in review controller.
+2024-12-19T21:14:33.051Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:14:33.054Z info: From protectRoute middleware.
+2024-12-19T21:14:33.060Z info: Access token verified.
+2024-12-19T21:14:33.061Z info: From getPostReview in review controller.
+2024-12-19T21:14:33.459Z info: Reviews fetched successfully. From getPostReview in review controller.
+2024-12-19T21:14:33.659Z info: Single Post fetched successfully.
+2024-12-19T21:14:37.718Z info: User logged out successfully. From logout in auth controller.
+2024-12-19T21:14:37.964Z info: User logged out successfully. From logout in auth controller.
+2024-12-19T21:14:39.678Z info: From getAllPosts in post controller.
+2024-12-19T21:14:39.679Z info: Query: 
+2024-12-19T21:14:39.822Z info: Posts fetched from Redis.
+2024-12-19T21:14:39.826Z info: From getAllPosts in post controller.
+2024-12-19T21:14:39.828Z info: Query: 
+2024-12-19T21:14:40.009Z info: Posts fetched from Redis.

@@ -1,5 +1,6 @@
 import prisma from "../lib/prisma.js";
 import bcrypt from "bcrypt";
+import logger from "../logger.js";
 
 export const updateUser = async (req, res) => {
   logger.info("From updateUser in user controller.");

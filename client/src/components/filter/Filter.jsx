@@ -5,7 +5,7 @@ import { usePropertiesStore } from "../../store/usePropertiesStore";
 const Filter = () => {
   const { getAllPosts } = usePropertiesStore();
   const [filterProps, setFilterProps] = useState({
-    type: "",
+    type: "rent",
     city: "",
     minPrice: "",
     maxPrice: "",
@@ -37,7 +37,6 @@ const Filter = () => {
             }
             className="select select-bordered w-full"
           >
-            <option value="">All Types</option>
             <option value="buy">Buy</option>
             <option value="rent">Rent</option>
           </select>

@@ -58,7 +58,7 @@ const SinglePost = () => {
               transition={{ duration: 0.5 }}
             >
               <h1 className="text-4xl font-bold mb-2">{property.title}</h1>
-              {user.id === property.userId && (
+              {user.id === property.user.id && (
                 <div className="flex gap-2">
                   <motion.button
                     onClick={handleUpdate}

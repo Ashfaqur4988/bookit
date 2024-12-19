@@ -42,8 +42,8 @@ export const getAllPosts = async (req, res) => {
       where: isQueryEmpty
         ? {}
         : {
-            city: city ?? undefined,
-            type: type ?? undefined,
+            city: city || undefined,
+            type: type || undefined,
             price: {
               gte: minPriceFinal,
               lte: maxPriceFinal,
