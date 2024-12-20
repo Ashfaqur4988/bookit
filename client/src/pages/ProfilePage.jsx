@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import LoadingSpinner from "../components/loading spinner/LoadingSpinner";
 import ProfilePicture from "../components/profile/ProfilePicture";
 import SavedPosts from "../components/profile/SavedPosts";
@@ -25,6 +25,7 @@ const ProfilePage = () => {
     ); // Handle the case when no property is found
   }
 
+  console.log("profile page");
   return (
     <div className="container mx-auto p-6">
       <div className="text-center">
@@ -39,4 +40,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default React.memo(ProfilePage);

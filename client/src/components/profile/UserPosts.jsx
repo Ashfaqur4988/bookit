@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
 import { Edit } from "lucide-react";
+import React from "react";
 
 const UserPosts = ({ userPosts }) => {
+  console.log("profile page child, user posts");
   return (
     <motion.div
       className="p-4 bg-base-200 rounded-lg shadow-lg mt-6 w-1/2 "
@@ -29,4 +31,4 @@ const UserPosts = ({ userPosts }) => {
   );
 };
 
-export default UserPosts;
+export default React.memo(UserPosts);

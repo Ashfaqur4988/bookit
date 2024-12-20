@@ -1,6 +1,8 @@
+/* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion"; // For animations
 import { MapPin, Home, Users, IndianRupee } from "lucide-react"; // Icons from Lucide
+import React from "react";
 
 const Card = ({ property }) => {
   return (
@@ -11,6 +13,20 @@ const Card = ({ property }) => {
       transition={{ duration: 0.5 }}
     >
       {/* Property Image */}
+      <PropertyImage property={property} />
+
+      {/* Property Details */}
+      <PropertyDetails property={property} />
+    </motion.div>
+  );
+};
+
+export default React.memo(Card);
+
+const PropertyImage = ({ property }) => {
+  return (
+    <>
+      {/* Property Image */}
       <div className="w-full lg:w-1/3">
         <img
           src={property.images[0]}
@@ -18,7 +34,13 @@ const Card = ({ property }) => {
           className="w-full h-full object-cover rounded-l-lg"
         />
       </div>
+    </>
+  );
+};
 
+const PropertyDetails = ({ property }) => {
+  return (
+    <>
       {/* Property Details */}
       <div className="card-body p-6 flex flex-col justify-between lg:w-2/3">
         {/* Property Name */}
@@ -46,8 +68,6 @@ const Card = ({ property }) => {
           <Users size={16} /> Nearby: {property.postDetail.nearby[0]}
         </p>
       </div>
-    </motion.div>
+    </>
   );
 };
-
-export default Card;

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  console.log("Home");
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}

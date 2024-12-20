@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
+import React from "react";
 
 const UserInfo = ({ name }) => {
+  console.log("profile page child,  user info");
   return (
     <motion.div
       className="text-center mt-4"
@@ -14,4 +16,4 @@ const UserInfo = ({ name }) => {
   );
 };
 
-export default UserInfo;
+export default React.memo(UserInfo);

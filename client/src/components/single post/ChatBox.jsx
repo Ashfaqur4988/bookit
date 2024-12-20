@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
+import React from "react";
 
-const ChatBox = ({ isOpen, onClose, postOwner }) => {
+const ChatBox = ({ isOpen, postOwner }) => {
+  console.log("single post child, chat box");
   if (!isOpen) return null;
 
   return (
@@ -11,6 +13,7 @@ const ChatBox = ({ isOpen, onClose, postOwner }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
+      onClick={console.log("chat box clicked")}
     >
       <div className="flex items-center gap-4 border-b pb-2 mb-4">
         <img
@@ -46,4 +49,4 @@ const ChatBox = ({ isOpen, onClose, postOwner }) => {
   );
 };
 
-export default ChatBox;
+export default React.memo(ChatBox);

@@ -1,29 +1,51 @@
-import { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Card from "../components/card/Card";
 import Filter from "../components/filter/Filter";
 import { usePropertiesStore } from "../store/usePropertiesStore";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../components/loading spinner/LoadingSpinner";
+import Pagination from "../components/pagination/Pagination";
 
 const Properties = () => {
   const { getAllPosts, properties, loading, totalPages } = usePropertiesStore();
   const [page, setPage] = useState(1); // State to track current page
 
-  useEffect(() => {
-    getAllPosts({ page, limit: 10 }); // Call API with page and limit
+  // Function to fetch properties & optimized it so that it do not get created on every render
+  const fetchProperties = useCallback(() => {
+    getAllPosts({ page, limit: 10 });
   }, [getAllPosts, page]);
 
-  const handleNextPage = () => {
+  useEffect(() => {
+    fetchProperties();
+  }, [fetchProperties]);
+
+  //next page function also memoized for optimization
+  const handleNextPage = useCallback(() => {
     if (page < totalPages) {
       setPage((prevPage) => prevPage + 1);
     }
-  };
+  }, [page, totalPages]);
 
-  const handlePrevPage = () => {
+  //prev page function also memoized for optimization
+  const handlePrevPage = useCallback(() => {
     if (page > 1) {
       setPage((prevPage) => prevPage - 1);
     }
-  };
+  }, [page]);
+
+  //this avoids creating a new map function on every render, reducing React’s reconciliation work.
+  const renderProperties = useCallback(() => {
+    if (!properties || properties.length === 0) {
+      return (
+        <div className="text-center py-20 text-lg">Properties not found.</div>
+      );
+    }
+    return properties.map((property) => (
+      <Link to={`/single-post/${property.id}`} key={property.id}>
+        <Card property={property} />
+      </Link>
+    ));
+  }, [properties]);
 
   return (
     <div className="container mx-auto px-6 py-12">
@@ -37,43 +59,18 @@ const Properties = () => {
             <LoadingSpinner />
           ) : (
             <div className="grid grid-cols-1 gap-8 overflow-y-auto h-full">
-              {!properties || properties.length === 0 ? (
-                <div className="text-center py-20 text-lg">
-                  Properties not found.
-                </div>
-              ) : (
-                properties.map((property) => (
-                  <Link to={`/single-post/${property.id}`} key={property.id}>
-                    <Card property={property} />
-                  </Link>
-                ))
-              )}
+              {renderProperties()}
             </div>
           )}
 
           {!properties ||
             (properties.length === 0 ? null : (
-              <div className="flex justify-center">
-                <button
-                  onClick={handlePrevPage}
-                  disabled={page === 1}
-                  className="px-4 py-2 bg-gray-200 rounded-lg mr-2 disabled:opacity-50"
-                >
-                  Previous
-                </button>
-
-                <span className="px-4 py-2">
-                  Page {page} of {totalPages}
-                </span>
-
-                <button
-                  onClick={handleNextPage}
-                  disabled={page === totalPages}
-                  className="px-4 py-2 bg-gray-200 rounded-lg ml-2 disabled:opacity-50"
-                >
-                  Next
-                </button>
-              </div>
+              <Pagination
+                handleNextPage={handleNextPage}
+                handlePrevPage={handlePrevPage}
+                page={page}
+                totalPages={totalPages}
+              />
             ))}
         </div>
       </div>
@@ -81,4 +78,4 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default React.memo(Properties);

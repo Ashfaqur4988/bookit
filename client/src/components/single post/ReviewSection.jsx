@@ -1,15 +1,20 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import { useReviewsStore } from "../../store/useReviewStore";
 
 const ReviewSection = ({ postId }) => {
+  console.log("single post child, review section");
   const { reviewsState, addReview, getPostReview } = useReviewsStore();
   const latestCommentRef = useRef(null);
 
-  useEffect(() => {
+  const getPostReviewFunc = useCallback(() => {
     getPostReview(postId);
   }, [getPostReview, postId]);
+
+  useEffect(() => {
+    getPostReviewFunc();
+  }, [getPostReviewFunc]);
 
   useEffect(() => {
     if (latestCommentRef.current) {
@@ -23,11 +28,14 @@ const ReviewSection = ({ postId }) => {
     postId,
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addReview(formData);
-    setFormData({ rating: 0, comment: "", postId });
-  };
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      addReview(formData);
+      setFormData({ rating: 0, comment: "", postId });
+    },
+    [addReview, formData, postId]
+  );
 
   // Filter reviews based on the current `postId`
   const filteredReviews = reviewsState.filter(
@@ -93,4 +101,6 @@ const ReviewSection = ({ postId }) => {
   );
 };
 
-export default ReviewSection;
+export default React.memo(ReviewSection, (prevProps, nextProps) => {
+  return prevProps.images === nextProps.images; // Custom comparison to avoid unnecessary renders
+});

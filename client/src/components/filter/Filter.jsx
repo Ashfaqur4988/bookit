@@ -1,20 +1,28 @@
 import { motion } from "framer-motion"; // Framer Motion for animation
-import { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { usePropertiesStore } from "../../store/usePropertiesStore";
 
 const Filter = () => {
   const { getAllPosts } = usePropertiesStore();
   const [filterProps, setFilterProps] = useState({
-    type: "rent",
+    type: "",
     city: "",
     minPrice: "",
     maxPrice: "",
   });
 
-  const handleQuery = () => {
-    // console.log(filterProps);
+  //prevents child component re-renders unless filterProps or getAllPosts changes.
+  const handleQuery = useCallback(() => {
     getAllPosts(filterProps);
-  };
+  }, [filterProps, getAllPosts]);
+
+  const handleChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      setFilterProps({ ...filterProps, [name]: value });
+    },
+    [filterProps]
+  );
 
   return (
     <motion.div
@@ -32,11 +40,10 @@ const Filter = () => {
           </label>
           <select
             value={filterProps.type}
-            onChange={(e) =>
-              setFilterProps({ ...filterProps, type: e.target.value })
-            }
+            onChange={handleChange}
             className="select select-bordered w-full"
           >
+            <option value="">All</option>
             <option value="buy">Buy</option>
             <option value="rent">Rent</option>
           </select>
@@ -50,9 +57,7 @@ const Filter = () => {
           <input
             type="text"
             value={filterProps.city}
-            onChange={(e) =>
-              setFilterProps({ ...filterProps, city: e.target.value })
-            }
+            onChange={handleChange}
             className="input input-bordered w-full"
             placeholder="Enter City"
           />
@@ -67,18 +72,14 @@ const Filter = () => {
             <input
               type="number"
               value={filterProps.minPrice}
-              onChange={(e) =>
-                setFilterProps({ ...filterProps, minPrice: e.target.value })
-              }
+              onChange={handleChange}
               className="input input-bordered w-1/2"
               placeholder="Min"
             />
             <input
               type="number"
               value={filterProps.maxPrice}
-              onChange={(e) =>
-                setFilterProps({ ...filterProps, maxPrice: e.target.value })
-              }
+              onChange={handleChange}
               className="input input-bordered w-1/2"
               placeholder="Max"
             />
@@ -94,4 +95,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+export default React.memo(Filter); // Use React.memo to optimize Filter;

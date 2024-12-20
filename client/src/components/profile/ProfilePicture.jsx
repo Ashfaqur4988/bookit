@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const ProfilePicture = ({ profileImage }) => {
@@ -22,4 +23,4 @@ const ProfilePicture = ({ profileImage }) => {
   );
 };
 
-export default ProfilePicture;
+export default React.memo(ProfilePicture); // Use React.memo to optimize ProfilePicture;

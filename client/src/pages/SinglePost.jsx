@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { usePropertiesStore } from "../store/usePropertiesStore";
 import ImageGallery from "../components/single post/ImageGallery";
@@ -21,20 +21,20 @@ const SinglePost = () => {
     getSinglePost(id);
   }, [getSinglePost, id]);
 
-  const handleChatBoxToggle = () => {
-    setShowChatBox(!showChatBox);
-  };
+  const handleChatBoxToggle = useCallback(() => {
+    setShowChatBox((prev) => !prev);
+  }, []);
 
-  const handleDelete = async () => {
+  const handleDelete = useCallback(async () => {
     console.log("Delete property:", property.id); // Replace with your delete logic
     await deletePost(property.id);
     navigate("/properties");
-  };
+  }, [property, deletePost, navigate]);
 
-  const handleUpdate = () => {
+  const handleUpdate = useCallback(() => {
     console.log("Update property:", property.id); // Replace with your update logic
     navigate("/update-post");
-  };
+  }, [property, navigate]);
 
   if (loading) {
     return <LoadingSpinner />; // Show spinner while loading
@@ -102,11 +102,15 @@ const SinglePost = () => {
             handleChatBoxToggle={handleChatBoxToggle}
           />
           <ReviewSection postId={id} />
-          <ChatBox isOpen={showChatBox} onClose={handleChatBoxToggle} />
+          <ChatBox
+            isOpen={showChatBox}
+            onClose={handleChatBoxToggle}
+            postOwner={property.user}
+          />
         </div>
       </div>
     )
   );
 };
 
-export default SinglePost;
+export default React.memo(SinglePost);

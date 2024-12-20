@@ -22,8 +22,6 @@ function App() {
     checkAuth();
   }, [checkAuth]);
 
-  console.log(user);
-
   return (
     <>
       <Router>

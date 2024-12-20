@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { XSquare } from "lucide-react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import axios from "axios";
 import { usePropertiesStore } from "../../store/usePropertiesStore";
 import { useNavigate } from "react-router-dom";
@@ -24,32 +24,38 @@ const PropertyForm = () => {
   const [amenityInput, setAmenityInput] = useState("");
   const [nearbyInput, setNearbyInput] = useState("");
 
-  const addAmenity = () => {
+  const addAmenity = useCallback(() => {
     if (amenityInput.trim()) {
       setAmenities([...amenities, amenityInput]);
       setAmenityInput("");
     }
-  };
+  }, [amenities, amenityInput]);
 
-  const addNearby = () => {
+  const addNearby = useCallback(() => {
     if (nearbyInput.trim()) {
       setNearby([...nearby, nearbyInput]);
       setNearbyInput("");
     }
-  };
+  }, [nearby, nearbyInput]);
 
-  const removeAmenity = (index) => {
-    setAmenities(amenities.filter((_, i) => i !== index));
-  };
+  const removeAmenity = useCallback(
+    (index) => {
+      setAmenities(amenities.filter((_, i) => i !== index));
+    },
+    [amenities]
+  );
 
-  const removeNearby = (index) => {
-    setNearby(nearby.filter((_, i) => i !== index));
-  };
+  const removeNearby = useCallback(
+    (index) => {
+      setNearby(nearby.filter((_, i) => i !== index));
+    },
+    [nearby]
+  );
 
   const [isLoading, setIsLoading] = useState(false);
   const [uploadError, setUploadError] = useState(null);
 
-  const handleImageUpload = async (e) => {
+  const handleImageUpload = useCallback(async (e) => {
     const files = e.target.files;
     const uploadedImages = [];
 
@@ -83,44 +89,47 @@ const PropertyForm = () => {
       return updatedImages;
     });
     setIsLoading(false);
-  };
+  }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // Form submission logic here
-    const post = {
-      postData: {
-        title: formData.title,
-        price: formData.price,
-        images: formData.images,
-        address: formData.address,
-        city: formData.city,
-        type: formData.type,
-      },
-      postDetail: {
-        description: formData.description,
-        amenities: amenities,
-        nearby: nearby,
-      },
-    };
-    // console.log(post);
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      // Form submission logic here
+      const post = {
+        postData: {
+          title: formData.title,
+          price: formData.price,
+          images: formData.images,
+          address: formData.address,
+          city: formData.city,
+          type: formData.type,
+        },
+        postDetail: {
+          description: formData.description,
+          amenities: amenities,
+          nearby: nearby,
+        },
+      };
+      // console.log(post);
 
-    await createPost(post);
+      await createPost(post);
 
-    setFormData({
-      title: "",
-      description: "",
-      price: "",
-      images: [],
-      type: "",
-      address: "",
-      city: "",
-    });
-    setAmenities([]);
-    setNearby([]);
-    setImages([]);
-    navigate(`/properties`);
-  };
+      setFormData({
+        title: "",
+        description: "",
+        price: "",
+        images: [],
+        type: "",
+        address: "",
+        city: "",
+      });
+      setAmenities([]);
+      setNearby([]);
+      setImages([]);
+      navigate(`/properties`);
+    },
+    [formData, amenities, nearby, navigate, createPost]
+  );
 
   return (
     <>
